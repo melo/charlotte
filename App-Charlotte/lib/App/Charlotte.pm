@@ -2,8 +2,11 @@ package App::Charlotte;
 
 use warnings;
 use strict;
+use base 'Mojo::Base';
 
 our $VERSION = '0.01';
+
+__PACKAGE__->attr('rooms', default => {}, chained => 1);
 
 
 
