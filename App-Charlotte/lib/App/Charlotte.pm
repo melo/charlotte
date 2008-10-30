@@ -3,62 +3,57 @@ package App::Charlotte;
 use warnings;
 use strict;
 
+our $VERSION = '0.01';
+
+
+
+1; # End of App::Charlotte
+
+__END__
+
+=encoding utf8
+
+
 =head1 NAME
 
-App::Charlotte - The great new App::Charlotte!
+App::Charlotte - A multi-user chat service
+
 
 =head1 VERSION
 
 Version 0.01
 
-=cut
-
-our $VERSION = '0.01';
-
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use App::Charlotte;
 
-    my $foo = App::Charlotte->new();
-    ...
+    my $service = App::Charlotte->new;
+    
+    my $room = $service->get_a_room({ name => $name });
+    my $ok = $room->add_member({ nick => $nick });
+    
+    $room->dequeue({
+      cb => sub {
+        # @_ is an array of events
+      }
+    });
 
-=head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+=head1 DESCRIPTION
 
-=head1 FUNCTIONS
 
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
 
 =head1 AUTHOR
 
-Pedro Melo, C<< <melo at cpan.org> >>
+Pedro Melo, C<< <melo at simplicidade.org> >>
+
 
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-app-charlotte at rt.cpan.org>, or through
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=App-Charlotte>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT
@@ -93,15 +88,12 @@ L<http://search.cpan.org/dist/App-Charlotte>
 
 =head1 ACKNOWLEDGEMENTS
 
+Kudos to Sebastian Riedel for L<Mojo>.
+
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 Pedro Melo, all rights reserved.
+Copyright 2008 Pedro Melo.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
-
-
-=cut
-
-1; # End of App::Charlotte
